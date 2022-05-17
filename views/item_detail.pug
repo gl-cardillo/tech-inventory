@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  h2= title
+    div(class='item')
+        p Category: #{item.category}
+        p Price: #{item.price_formatted}£
+        p Stock: #{item.stock} 
+  h3 
+    p 
+      a(href=item.url + '/update') Update item 
+    p 
+      a(href=item.url + '/delete') Delete item

@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class='title-mainbar')
+      h1 Tech Inventory
+      ul(class='mainbar')
+        li 
+          a(href='/') Home
+        li 
+          a(href='/computer') Computers 
+        li 
+          a(href='/phones') Phones 
+        li 
+          a(href='/consoles') Consoles 
+        li 
+          a(href='/item/create') Add
+    block content
