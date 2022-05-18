@@ -4,7 +4,7 @@
 
 ## Description:
 ---
-This is a simple page for keeping track of a tech inventory.
+This is a simple page for keeping track of a tech inventory, I added just basic style(I haven't worked on it that much).
 
 <br/>
 
@@ -19,4 +19,4 @@ This is a simple page for keeping track of a tech inventory.
 
 ## Link
 ---
-No link available at the moment.
+Check the [demo]( https://lc-tech-inventory.herokuapp.com/) 
