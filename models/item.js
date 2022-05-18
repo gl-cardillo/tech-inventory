@@ -10,7 +10,9 @@ var ItemSchema = new Schema({
   manufacturer: {type: String, required: true, maxlength: 50},
   ssd: {type: String, maxlength: 10},
   ram: {type: String, maxlength: 10},
-  screen_size: {type: String, maxlength: 10}
+  screen_size: {type: String, maxlength: 10},
+  description: {type: String, maxlength: 500},
+  img: { type: String  }
 
 })
 
@@ -18,8 +20,5 @@ ItemSchema.virtual('url').get(function() {
   return '/item/' + this._id;
 })
 
-ItemSchema.virtual('price_formatted').get(function() {
-  return (this.price/100).toFixed(2);
-})
 
 module.exports = mongoose.model('Item', ItemSchema);

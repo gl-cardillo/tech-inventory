@@ -1,13 +1,34 @@
 extends layout 
 
-block content 
-  h2= title
-    div(class='item')
-        p Category: #{item.category}
-        p Price: #{item.price_formatted}£
-        p Stock: #{item.stock} 
-  h3 
-    p 
-      a(href=item.url + '/update') Update item 
-    p 
-      a(href=item.url + '/delete') Delete item
+block content   
+  h4 #{item.name}  
+  div(class='edit-button')
+    a(href=item.url + '/update') Update item 
+    a(href=item.url + '/delete') Delete item
+  div(class='item-detail')      
+    - var img = item.img !== '' ? '/uploads/' + item.img : '/uploads/no-pic.webp'
+    img(src=img)
+    p(class='bold t24px ') Main info
+
+      p Category: 
+        span(class='bold') #{item.category}
+      p Mnufacturer: 
+        span(class='bold') #{item.manufacturer}
+      p Price: 
+        span(class='bold') #{item.price} £
+      p Stock: 
+        span(class='bold') #{item.stock}
+    br
+    p(class='bold t24px') Specifics
+      hr
+      p Ram: 
+        span(class='bold') #{item.ram}
+      p Ssd: 
+        span(class='bold') #{item.ssd}
+      p Screen size: 
+        span(class='bold') #{item.screen_size}"
+    br
+    p(class='bold t24px') Description
+      hr
+      p #{item.description}
+

@@ -3,37 +3,41 @@ extends layout
 block content 
   h2= title 
 
-  form(method='POST' action='')
+  form(method='POST' enctype='multipart/form-data' action='')
     div.form-group
-      p Choose a category:      
-      label(for='Computers') Computers
-      input#category.form-control(type='radio', name='category', value='Computers')
-      label(for='Phones') Phones  
-      input#category.form-control(type='radio', name='category', value='Phones')
-      label(for='Consoles') Consoles  
-      input#category.form-control(type='radio', name='category', value='Consoles')
+      p Choose a category:
+      div.radio-form  
+        div.radio-input      
+          input#Computers.form-control(type='radio', name='category',  value='Computers' )  
+          label(for='Computers') Computers
+        div.radio-input
+          input#Phones.form-control(type='radio', name='category', value='Phones' ) 
+          label(for='Phones') Phones          
+        div.radio-input
+          input#Consoles.form-control(type='radio', name='category', value='Consoles' )
+          label(for='Consoles') Consoles  
+    div.form-group  
+      input#name.form-control(type='text', name='name', placeholder='Product name' value=(undefined===item ? '' : item.name))
     div.form-group 
-      label(for='name') Product name: 
-      input#name.form-control(type='text', name='name', value=(undefined===item ? '' : item.name))
-    div.form-group 
-      label(for='price') Product price: 
-      input#price.form-control(type='number', name='price', value=(undefined===item ? '' : item.price))
+      input#price.form-control(type='number', name='price', step='0.01', placeholder='Product price' value=(undefined===item ? '' : item.price))
     div.form-group
-      label(for='stock') Product quantity:
-      input#stock.form-control(type='number', name='stock', value=(undefined===item ? '' : item.stock))
+      input#stock.form-control(type='number', name='stock', placeholder='Product quantity' value=(undefined===item ? '' : item.stock))
     div.form-group 
-      label(for='manufacturer') Product manufacturer:
-      input#manufacturer.form-control(type='text', name='manufacturer', value=(undefined===item ? '' : item.manufacturer))
+      input#manufacturer.form-control(type='text', name='manufacturer', placeholder='Product manufacturer' value=(undefined===item ? '' : item.manufacturer))
     div.form-group 
-      label(for='ssd') Product ssd size:
-      input#sdd.form-control(type='text', name='ssd', value=(undefined===item ? '' : item.ssd))
+      input#sdd.form-control(type='text', name='ssd', placeholder='Product ssd size' value=(undefined===item ? '' : item.ssd))
     div.form-group 
-      label(for='ram') Product ram size:
-      input#ssd.form-control(type='text', name='ram', value=(undefined===item ? '' : item.ram))
+      input#ssd.form-control(type='text', name='ram', placeholder='Product ram size' value=(undefined===item ? '' : item.ram))
     div.form-group 
-      label(for='screen_size') Product screen size:
-      input#screen_size.form-control(type='text', name='screen_size', value=(undefined===item ? '' : item.screen_size))
-    button.btn.btn-primary(type='submit') Submit
+      input#screen_size.form-control(type='text', name='screen_size', placeholder='Product screen size' value=(undefined===item ? '' : item.screen_size))
+    div.form-group 
+      textarea#description.form-control(type='textarea', name='description', placeholder='Enter a description' value=(undefined===item ? '' : item.description))
+    div.form-group
+      input.file-type(type='file' name='image' id='image')      
+      label.custom-file-upload(for='image') Select an image
+      if errorImage 
+        p Only image allowed
+    button.btn.btn-form(type='submit') Submit
   
   if errors
     ul
