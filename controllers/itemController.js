@@ -74,12 +74,15 @@ exports.item_create_post = [
         description: req.body.description,
         img: req.file?.filename,
       })
-
-    if (!req.file.mimetype.match(/^image/) ) {
-      res.render('item_form', {title: 'Add item to inventory', item: item, errorImage: true})      
+  
+    if (req.file) {
+      if (!req.file.mimetype.match(/^image/) ) {
+        res.render('item_form', {title: 'Add item to inventory', item: item, errorImage: true})  
+      }   
     } else if (!errors.isEmpty()) {
       res.render('item_form', {title: 'Add item to inventory', item: item, errors: errors.array(), selected_category: ''})
     } else {
+      if (!req.file) item.img = '';
       item.save(function (err) {
         if (err) {return next(err)} 
         res.redirect(item.url)
